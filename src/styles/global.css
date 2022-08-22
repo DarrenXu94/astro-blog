@@ -3,7 +3,12 @@
   https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
   License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
  */
+
+ /* https://colorhunt.co/palette/277bc0ffb200ffcb42fff4cf */
 body {
+
+	--color-primary: #277BC0;
+
 	font-family: Verdana, sans-serif;
 	margin: auto;
 	padding: 20px;
@@ -14,6 +19,10 @@ body {
 	overflow-wrap: break-word;
 	line-height: 1.5;
 	color: #444;
+	background: white;
+  background-image: radial-gradient(var(--color-primary) 1px, transparent 0);
+  background-size: 120px 120px;
+  background-position: -29px -29px;
 }
 h1,
 h2,
@@ -26,7 +35,7 @@ b {
 	color: #222;
 }
 a {
-	color: #3273dc;
+	color: var(--color-primary);
 }
 nav a {
 	margin-right: 10px;

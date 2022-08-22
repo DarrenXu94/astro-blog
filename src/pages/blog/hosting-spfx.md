@@ -3,7 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: "SPFX project on Ubuntu"
 description: "I describe the process of setting up a SPFX project on Ubtunu."
 pubDate: "May 15 2021"
-heroImage: "/placeholder-hero.jpg"
+heroImage: "/framework-1.webp"
 ---
 
 During work I use a windows machine to develop SPFX solutions on a corporate SharePoint Online tenancy. It turns out Microsoft have given developers a chance to have their [own developer tenancy](https://developer.microsoft.com/en-us/microsoft-365/dev-program) for personal development and playing around. I decided to have a go at setting this up to see how the process would work on my own machine.
@@ -12,8 +12,6 @@ Setting up the Microsoft developer account
 ------------------------------------------
 
 After [creating an account](https://developer.microsoft.com/en-us/microsoft-365/dev-program) on the developer portal (I strongly recommend using your personal email as if you change jobs you will lose access) you will be able to access your [365 profile page](https://developer.microsoft.com/en-us/microsoft-365/profile/). On this profile page I installed the sample data pack (which says it should take a few minutes, turns out it took almost 10 hours) before installing the SharePoint data pack.
-
-![](__GHOST_URL__/content/images/2021/05/image.png)
 
 Once you've set these up you will need to create an admin account which will have a [onmicrosoft.com](mailto:something@yourdomain.onmicrosoft.com) extension. This will be the account you use to log in to SharePoint with. If you have forgotten the SharePoint site name you can always visit the [admin centre](https://admin.microsoft.com/) (I had to do this).
 

@@ -12,15 +12,11 @@ Recently I decided to create a developer profile on Chrome so I could clean up m
 
 First I exported my bookmarks from Chrome.
 
-![](__GHOST_URL__/content/images/2021/09/image.png)
-
 ### Create Notion credentials
 
 Follow [this page](https://developers.notion.com/docs/getting-started) to get a developer account with a secret and set up an integration. From step 2 onwards this tutorial is not relevant as it talks about using the Notion database, whereas we want to create page content.
 
 Share your page you want to post to with your integration. Take note of the URL as it contains the Database Id.
-
-![](__GHOST_URL__/content/images/2021/09/image-1.png)
 
 ### NodeJS
 

@@ -4,33 +4,44 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 import { Image } from "@astrojs/image/components";
-import heroImage from "../assets/placeholder-hero.jpg";
+import heroImage from "../assets/daz.png";
 ---
 
-<!DOCTYPE html>
-<html lang="en-us">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header title={SITE_TITLE} />
-		<main>
-			<p>Hi there,</p><p>
-				My name is Darren and I am a passionate front end developer. I have
-				decided to start a blog to detail down lessons I've learnt on my front
-				end journey. This blog will be used to communicate problems I've
-				encountered, report clever solutions and act as a reference point for
-				myself and others in the future.
-			</p>
-			<Image src={heroImage} />
+<style lang="scss">
+	#intro {
+		img {
+			display: block;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		@media only screen and (max-width: 600px) {
+			img {
+				width: 200px;
+			}
+		}
+	}
+</style>
 
-			<p><strong>Who am I?</strong></p><p>
-				I am a Canberra local who graduated from ANU with a Bachelor's of
-				Software Engineering (2016). I have dabbled with a wide range of full
-				stack technologies but my personal preference is working on front end
-				development such as React.
-			</p>
-		</main>
-		<Footer />
-	</body>
-</html>
+<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+
+<body>
+	<Header title={SITE_TITLE} />
+	<main id="intro">
+		<p>Hi there,</p><p>
+			My name is Darren and I am a passionate front end developer. I have
+			decided to start a blog to detail down lessons I've learnt on my front end
+			journey. This blog will be used to communicate problems I've encountered,
+			report clever solutions and act as a reference point for myself and others
+			in the future.
+		</p>
+		<Image src={heroImage} width={300} aspectRatio={814 / 1136} />
+
+		<p><strong>Who am I?</strong></p><p>
+			I am a Canberra local who graduated from ANU with a Bachelor's of Software
+			Engineering (2016). I have dabbled with a wide range of full stack
+			technologies but my personal preference is working on front end
+			development such as React.
+		</p>
+	</main>
+	<Footer />
+</body>

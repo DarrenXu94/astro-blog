@@ -3,7 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: "Setting up the basics"
 description: "Setting up to the basics to the solution for a React app."
 pubDate: "May 26 2021"
-heroImage: "/placeholder-hero.jpg"
+heroImage: "/storybook.png"
 ---
 
 Now that we've got our environment, deployment and layout configured we can start looking into the React project structure. There are a few basics I like to set up first:

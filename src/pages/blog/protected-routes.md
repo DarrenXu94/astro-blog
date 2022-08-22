@@ -3,7 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: "SharePoint protected routes"
 description: "Code snippet for SharePoint protected routes with React router."
 pubDate: "Jun 08 2021"
-heroImage: "/placeholder-hero.jpg"
+heroImage: "/react-router.webp"
 ---
 
 Below is a code snippet I am using for protected routing in SharePoint. The route looks at a user's SharePoint groups and allows/redirects based on access.

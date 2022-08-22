@@ -3,7 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: "Setting up Ghost to run from a subdomain"
 description: "Brief notes on setting up my subdomain"
 pubDate: "Apr 29 2021"
-heroImage: "/placeholder-hero.jpg"
+heroImage: "/NGINX-logo-rgb-large.png"
 ---
 
 When I first set up my Ghost blog I decided to host it at the apex domain level darrenxu.com. This was a good place to start but I decided having a blog as my default landing page wasn't what I was after. Instead I wanted to have my portfolio in the 'home' page and the blog part of a subdomain off that domain.

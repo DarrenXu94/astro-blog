@@ -3,7 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: "Hosting a blog with Ghost CMS"
 description: "A biref set of notes in setting up my Ghost CMS blog"
 pubDate: "Apr 04 2021"
-heroImage: "/placeholder-hero.jpg"
+heroImage: "/ghost_logo_big.png"
 ---
 
 I have previously used several blog CMS platforms such as Netlify with Gatsby but have recently decided to give [Ghost](https://ghost.org/) a try. Ghost is open source and developer focused which has resulted in plenty of quality of life features being built in. [Themes](https://ghost.org/marketplace/) are a quick and easy way to customise your blog and [integrations](https://ghost.org/integrations/) allow for quick functionality to be added.
@@ -34,8 +34,6 @@ I have decided to use the fonts Ubuntu and Nunito. To use them copy the snippet 
         --font-secondary: 'Nunito', sans-serif;
       }
     </style>
-
-![](__GHOST_URL__/content/images/2021/04/5e5346352c16e8d69e1649f2_cover_hero-1.svg)
 
 My avatar was created using [OpenPeeps](https://www.openpeeps.com/), an open source vector character creator. These illustrations can be created online with a limited set of features or downloaded and edited with your favourite illustration editor (Figma, Adobe XD).
 

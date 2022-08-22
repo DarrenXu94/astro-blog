@@ -86,8 +86,6 @@ Step 2: Add Helmet to allow header links to be added to any React component, pre
 
 Result
 
-![](__GHOST_URL__/content/images/2021/05/image-6.png)
-
 Step 3: Add in the web manifest. Cross origin tag needs to be used for the webmanifest to load assets within the same folder using auth. When I did this from my work SharePoint account everything worked out of the box, however when I tried to do this on my new instance the manifest file was pointing to the root directory of the site eg <your-site>/android-chrome-512x512.png (I found this out using [this handy article](https://web.dev/add-manifest-react/). Turns out Chrome's application tab can give you a manifest preview). I had to change the url of my webmanifest to include the full url /sites/hub/SiteAssets/static/android-chrome-512x512.png.
 
     <link
@@ -97,8 +95,6 @@ Step 3: Add in the web manifest. Cross origin tag needs to be used for the webma
               />
 
 Final result!
-
-![](__GHOST_URL__/content/images/2021/05/Screenshot_20210523-164015_Chrome.jpg)
 
 Step 4: Add iPhone support. IPhones/Apple products don't actually use the webmanifest to load their icons (the icon names give it away with the Android tag) so we need to add their own reference using the apple-touch-icon link reference. This however causes some issues with SharePoint as the link icon needs to accessible without credentials. A few ways around this are by hosting the image elsewhere not behind logins or use the base 64 encoded image as a source. I chose the latter and converted my image using [this website](https://www.base64-image.de/).
 

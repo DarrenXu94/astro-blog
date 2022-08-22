@@ -62,30 +62,23 @@ According to official [Microsoft documentation](https://support.microsoft.com/en
 
 **Supported Column Types**
 
+- Single line of text
+- Choice (single value)
+- Number
+- Currency
+- Date and Time
+- Lookup
+- Person or Group (single value)
+
 **Unsupported Column Types**
 
-Single line of text
-
-Multiple lines of text
-
-Number
-
-Currency
-
-Date and Time
-
-Person or Group
-
-Calculated
-
-Hyperlink or Picture
-
-Custom Columns
-
-Yes/No
-
-Choice
-
-Lookup
+- Multiple lines of text
+- Choice (multi-valued)
+- Calculated
+- Hyperlink or Picture
+- Custom columns
+- Lookup (multi-valued)
+- Person (multi-valued)
+- Yes/No
 
 This makes this feature limited but still useful in cases such as querying for a user's name but the lack of nesting objects and column types is still a bit disappointing.

@@ -3,7 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: "Deploying SPFX"
 description: "How to publish your SPFX solution"
 pubDate: "May 17 2021"
-heroImage: "/placeholder-hero.jpg"
+heroImage: "/intro-spfx.png"
 ---
 
 In this blog I will describe how I set up my deployment solution including how to publish your SPFX application to SharePoint using bash.
@@ -84,18 +84,10 @@ Special mentions to the packages [gulp-spsync-creds](https://www.npmjs.com/packa
 
 Once deployed you can check your App Catalog to see if they've been added correctly.
 
-![](__GHOST_URL__/content/images/2021/05/image-2.png)
-
 Next add the App to your site using the New App dropdown.
-
-![](__GHOST_URL__/content/images/2021/05/image-3.png)
 
 Your app should appear in the app list, otherwise you have either failed to deploy it or the app has already been added.
 
 Next create a new page and open the Webpart dropdown. You should see your app listed here.
 
-![](__GHOST_URL__/content/images/2021/05/image-4.png)
-
 Finally add it in to see if it all works. After I confirmed that it's rendering correctly I named the page, published and set is as my home page.
-
-![](__GHOST_URL__/content/images/2021/05/image-5.png)

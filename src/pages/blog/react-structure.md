@@ -3,7 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: "Structuring a large React program"
 description: "Thoughts and tips and structuring a large scale React application."
 pubDate: "May 21 2021"
-heroImage: "/placeholder-hero.jpg"
+heroImage: "/react-structure.jpeg"
 ---
 
 During my years as a React developer I have found the language to be very easy to start but gradually bloat and become more difficult to maintain as projects grew larger. In this post I aim to describe what I personally have found to be the best practices for maintaining readability and usability in a React project.

@@ -3,7 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: "Client side configuration"
 description: "Configuring your SharePoint site client side."
 pubDate: "Jun 20 2021"
-heroImage: "/placeholder-hero.jpg"
+heroImage: "/client-small.jpeg"
 ---
 
 Sometimes it is necessary is use client side js to configure a SharePoint site. This may be due to lack of access to the PNP Powershell cmdlet or environmental constraints. Configuring via client side isn't my method of choice as it's not as reliable as the supported cmdlet, doesn't cover all deployment options and also requires the extra steps of having to build the features into an SPFX solution just to run a few times. However, if you are in a constrained environment, PNPjs can get you most of the way there.
