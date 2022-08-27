@@ -6,6 +6,6 @@ import image from "@astrojs/image";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://DarrenXu94.github.io",
+  site: "https://darrenxu.com",
   integrations: [mdx(), sitemap(), image()],
 });
