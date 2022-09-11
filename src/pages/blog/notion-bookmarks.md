@@ -3,7 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: "Using Notion to import bookmarks"
 description: "Using the Notion API to create a page of bookmarks."
 pubDate: "Sep 1 2021"
-heroImage: "/placeholder-hero.jpg"
+heroImage: "/images/blog/notion-bookmarks/hero.png"
 ---
 
 Recently I decided to create a developer profile on Chrome so I could clean up my bookmarks and split up what browser I used for each activity. This was not effective. I still ended up using my main profile to browser tech related things and found switching between the two too tedious. I was going to add all my tech bookmarks back, but I decided to store them in Notion instead as a better reference as I don't use them all the time.
@@ -21,62 +21,65 @@ Share your page you want to post to with your integration. Take note of the URL 
 ### NodeJS
 
 To work with Notion via JS we need the [Javascript](https://github.com/makenotion/notion-sdk-js) client.
-
-    npm install @notionhq/client
-    
+```cmd
+npm install @notionhq/client
+```
 
 We will be using the [Append Block Children](https://developers.notion.com/reference/patch-block-children) route. The following lines are all you need to connect to the client.
 
-    const notion = new client.Client({
-      auth: process.env.SECRET,
+```ts
+const notion = new client.Client({
+  auth: process.env.SECRET,
+});
+
+const databaseId = process.env.DATABASE_ID;
+
+...
+const response = await notion.blocks.children.append({
+      block_id: databaseId,
+      children,
     });
-    
-    const databaseId = process.env.DATABASE_ID;
-    
-    ...
-    const response = await notion.blocks.children.append({
-          block_id: databaseId,
-          children,
-        });
-    ...
+...
+```
 
 Structuring the call
 
 I used [bookmark-parser](https://www.npmjs.com/package/bookmark-parser) to read my local .html bookmark file and looped through all the folders and links.
+```ts
+// For a heading
+  const folderTitleBlock = {
+      object: "block",
+      type: "heading_2",
+      heading_2: {
+        text: [
+          {
+            type: "text",
+            text: {
+              content: folder.name,
+            },
+          },
+        ],
+      },
+    };
 
-    // For a heading
-     const folderTitleBlock = {
-          object: "block",
-          type: "heading_2",
-          heading_2: {
-            text: [
-              {
-                type: "text",
-                text: {
-                  content: folder.name,
+// For a link
+const paragraphBlock = {
+        object: "block",
+        type: "paragraph",
+        paragraph: {
+          text: [
+            {
+              type: "text",
+              text: {
+                content: link.name,
+                link: {
+                  url: link.url,
                 },
               },
-            ],
-          },
-        };
-    
-    // For a link
-    const paragraphBlock = {
-            object: "block",
-            type: "paragraph",
-            paragraph: {
-              text: [
-                {
-                  type: "text",
-                  text: {
-                    content: link.name,
-                    link: {
-                      url: link.url,
-                    },
-                  },
-                },
-              ],
             },
-          };
+          ],
+        },
+      };
+```
 
 Then I just call the append function and it works like a charm!

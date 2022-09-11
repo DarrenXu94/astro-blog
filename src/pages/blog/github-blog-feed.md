@@ -3,7 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: "Creating a Github profile readme with Astro blogs"
 description: "How I created a Github readme populated from posts from my blog"
 pubDate: "Aug 28 2022"
-heroImage: "/astro.jpeg"
+heroImage: "/images/blog/github-blog-feed/hero.jpeg"
 ---
 
 ## Intro

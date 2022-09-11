@@ -3,7 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: "Host a component library for free"
 description: "Steps I did to host a Vue component library for free using Github pages and storybook"
 pubDate: "Sep 02 2021"
-heroImage: "/client-small.jpeg"
+heroImage: "/images/blog/component-library/hero.jpeg"
 ---
 
 I wanted to create and host a design system online for free. This is part 1 of the series where I host the Vue components in a Storybook project deployed on Github pages.
@@ -89,7 +89,7 @@ I am using [this library](https://www.npmjs.com/package/@storybook/storybook-dep
 
 I added a Github pipeline to update the static site when specific files are changed as well as allow for manual deployment.
 
-```yml
+```yaml
 on:
   push:
     paths: ["stories/**", "src/components/**"] # Trigger the action only when files change in the folders defined here
@@ -99,7 +99,7 @@ on:
 
 I use [this action](https://github.com/JamesIves/github-pages-deploy-action) to run the Github pages deploy action from the specified out folder. 
 
-```yml
+```yaml
 - name: Deploy 🚀
   uses: JamesIves/github-pages-deploy-action@3.6.2
   with:

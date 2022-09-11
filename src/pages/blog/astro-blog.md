@@ -3,7 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: "Publishing my blog with Astro"
 description: "Steps I took in publishing this blog with Astro."
 pubDate: "Aug 22 2022"
-heroImage: "/astro.jpeg"
+heroImage: "/images/blog/astro-blog/hero.jpeg"
 ---
 
 ## Intro

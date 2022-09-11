@@ -3,7 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: "Deploying SPFX"
 description: "How to publish your SPFX solution"
 pubDate: "May 17 2021"
-heroImage: "/intro-spfx.png"
+heroImage: "/images/blog/deploying-spfx/hero.png"
 ---
 
 In this blog I will describe how I set up my deployment solution including how to publish your SPFX application to SharePoint using bash.
@@ -20,21 +20,25 @@ I want to deploy my SPFX solution only to a specific site so I've decided to use
 
 Package solution
 
-    gulp clean
-    gulp bundle --ship
-    gulp package-solution --ship
+```cmd
+gulp clean
+gulp bundle --ship
+gulp package-solution --ship
+```
     
 
 Bash
 
-    #!/bin/bash
-    
-    site=https://<your-site>.sharepoint.com/sites/hub
-    read -sp 'Password: ' passvar
-    
-    m365 login -t password --userName <username>@<domain>.onmicrosoft.com --password $passvar
-    m365 spo app add -p ./sharepoint/solution/sample.sppkg --overwrite --scope sitecollection --appCatalogUrl $site
-    m365 spo app deploy -n sample.sppkg --scope sitecollection --appCatalogUrl $site
+```cmd
+#!/bin/bash
+
+site=https://<your-site>.sharepoint.com/sites/hub
+read -sp 'Password: ' passvar
+
+m365 login -t password --userName <username>@<domain>.onmicrosoft.com --password $passvar
+m365 spo app add -p ./sharepoint/solution/sample.sppkg --overwrite --scope sitecollection --appCatalogUrl $site
+m365 spo app deploy -n sample.sppkg --scope sitecollection --appCatalogUrl $site
+```
     
 
 This will prompt for a password on run
@@ -42,44 +46,44 @@ This will prompt for a password on run
 The bash script above can deploy the solution but I wanted something that didn't need the m365 library (wanted the m365 to be used only in setting up the solution, not part of the ongoing project). The script required inputting a password every time (or saving in plain text which I didn't want to do) so I looked at using [Cpass](https://www.npmjs.com/package/cpass). It provides encryption of the weakest kind but means passwords won't be in plain text.
 
 Gulp
-
-    gulp.task("upload-app-pkg", function () {
-      const pkgFile = require('./config/package-solution.json');
-      const folderLocation = `./sharepoint/${pkgFile.paths.zippedPackage}`;
-      return gulp.src(folderLocation)
-        .pipe(spsync({
-          "username": "<username>@<domain>.onmicrosoft.com",
-          "password": cpass.decode("encoded pass"),
-          "site": "https://<your-site>.sharepoint.com/sites/hub",
-          "libraryPath": "AppCatalog",
-          "publish": true,
-          "verbose": false
-        }))
+```js
+gulp.task("upload-app-pkg", function () {
+  const pkgFile = require('./config/package-solution.json');
+  const folderLocation = `./sharepoint/${pkgFile.paths.zippedPackage}`;
+  return gulp.src(folderLocation)
+    .pipe(spsync({
+      "username": "<username>@<domain>.onmicrosoft.com",
+      "password": cpass.decode("encoded pass"),
+      "site": "https://<your-site>.sharepoint.com/sites/hub",
+      "libraryPath": "AppCatalog",
+      "publish": true,
+      "verbose": false
+    }))
+});
+gulp.task("deploy", function () {
+  const pkgFile = require("./config/package-solution.json");
+  if (pkgFile) {
+    // Retrieve the filename from the package solution config file
+    let filename = pkgFile.paths.zippedPackage;
+    // Remove the solution path from the filename
+    filename = filename.split("/").pop();
+    // Retrieve the skip feature deployment setting from the package solution config file
+    const skipFeatureDeployment = pkgFile.solution.skipFeatureDeployment ?
+      pkgFile.solution.skipFeatureDeployment :
+      false;
+    // Deploy the SharePoint package
+    return sppkgDeploy.deploy({
+      username: "<user>@<domain>.onmicrosoft.com", // The user that will deploy the file
+      password: cpass.decode("encoded pass"), // The password of the user
+      tenant: "<your-site>", // The tenant name. Example: contoso
+      site: "sites/hub", // Path to your app catalog site
+      filename: filename, // Filename of the package
+      skipFeatureDeployment: skipFeatureDeployment, // Do you want to skip the feature deployment (SharePoint Framework)
+      verbose: true, // Do you want to show logging during the deployment
     });
-    gulp.task("deploy", function () {
-      const pkgFile = require("./config/package-solution.json");
-      if (pkgFile) {
-        // Retrieve the filename from the package solution config file
-        let filename = pkgFile.paths.zippedPackage;
-        // Remove the solution path from the filename
-        filename = filename.split("/").pop();
-        // Retrieve the skip feature deployment setting from the package solution config file
-        const skipFeatureDeployment = pkgFile.solution.skipFeatureDeployment ?
-          pkgFile.solution.skipFeatureDeployment :
-          false;
-        // Deploy the SharePoint package
-        return sppkgDeploy.deploy({
-          username: "<user>@<domain>.onmicrosoft.com", // The user that will deploy the file
-          password: cpass.decode("encoded pass"), // The password of the user
-          tenant: "<your-site>", // The tenant name. Example: contoso
-          site: "sites/hub", // Path to your app catalog site
-          filename: filename, // Filename of the package
-          skipFeatureDeployment: skipFeatureDeployment, // Do you want to skip the feature deployment (SharePoint Framework)
-          verbose: true, // Do you want to show logging during the deployment
-        });
-      }
-    });
-
+  }
+});
+```
 Special mentions to the packages [gulp-spsync-creds](https://www.npmjs.com/package/gulp-spsync-creds) and [node-sppkg-deploy](https://www.npmjs.com/package/node-sppkg-deploy) for making uploading and deploying from gulp a breeze.
 
 Once deployed you can check your App Catalog to see if they've been added correctly.
