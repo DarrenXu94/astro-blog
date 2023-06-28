@@ -3,6 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: "Follow my journey on creating a fun front-end side project"
 description: "Part 1 of an unknown number part series where I try make something and document every dumb mistake I make"
 pubDate: "Oct 16 2022"
+hidden: true
 ---
 
 # Part 1, I wanna make something, but what?

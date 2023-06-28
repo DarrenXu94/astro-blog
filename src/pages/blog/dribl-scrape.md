@@ -3,6 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: "Scraping and deploying a website with Astro and Github actions"
 description: "Steps I followed and lessons learnt during a process of making a static site with Astro and Github actions"
 pubDate: "Dec 28 2022"
+heroImage: "/images/blog/dribl-scrape/hero.png"
 ---
 
 ### What am I making
