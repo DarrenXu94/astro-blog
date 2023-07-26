@@ -3,7 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: "How I Fixed a Slow Vue Application with Web Workers"
 description: "Optimized data retrieval in a Vue app using Web Workers resulted in a significant performance boost, reducing fetching times from up to 14 seconds to just 2 seconds."
 pubDate: "July 26 2023"
-heroImage: "/images/blog/solution-basics/hero.png"
+heroImage: "/images/blog/web-workers/hero.png"
 ---
 
 Recently, I came across a challenging situation while working on a Vue application that grappled with slow data retrieval. In this blog post, I'll share the issue I encountered while dealing with legacy code, the innovative solution I implemented using Web Workers, and the remarkable impact it had on boosting the application's performance.
@@ -21,7 +21,7 @@ Bits of code I learnt:
 Checking Web Worker Availability with Fallback:
 One essential consideration when working with Web Workers is to check if they are available in the user's browser. While most modern browsers support Web Workers, some older versions might not. To ensure compatibility, I employed a simple feature detection technique:
 
-```
+```js
 // Checking if Web Workers are supported
 if (window.Worker) {
   // Web Workers are available, proceed with creating workers
@@ -35,7 +35,7 @@ if (window.Worker) {
 Organizing the Web Worker in the src Directory:
 To fully leverage the benefits of modern JavaScript module systems, I found it beneficial to place the Web Worker code within the "src" directory alongside other Vue application files. This not only improved code organization but also allowed us to take advantage of the module resolution capabilities of modern bundlers like vite:
 
-```
+```js
 // Inside the Vue component where the Web Worker is used
 const worker = new Worker('@/workers/dataRetrievalWorker.js', { type: 'module' });
 ```
@@ -45,10 +45,11 @@ By placing the Web Worker in the "src" directory and using the "@/" alias, we en
 Using the "type: module" Argument on the Web Worker:
 One crucial aspect of working with modern JavaScript modules is specifying the "type: module" argument when creating a new Web Worker instance. This enables the use of ES6 import/export syntax within the Web Worker code, making it easier to organize and manage dependencies:
 
-```
+```js
 // Inside the dataRetrievalWorker.js (Web Worker) file
 import localforage from 'localforage';
 import axios from 'axios';
 
 // Your Web Worker logic here
 ```
+
