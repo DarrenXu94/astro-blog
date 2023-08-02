@@ -6,86 +6,86 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../config";
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
 const posts = (await Astro.glob("./blog/*.{md,mdx}"))
-	.filter((blog) => !blog.frontmatter.hidden)
-	.sort(
-		(a, b) =>
-			new Date(b.frontmatter.pubDate).valueOf() -
-			new Date(a.frontmatter.pubDate).valueOf()
-	);
+  .filter((blog) => !blog.frontmatter.hidden)
+  .sort(
+    (a, b) =>
+      new Date(b.frontmatter.pubDate).valueOf() -
+      new Date(a.frontmatter.pubDate).valueOf()
+  );
 ---
 
 <!DOCTYPE html>
 <html lang="en-us">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			ul {
-				list-style-type: none;
-				padding: unset;
-			}
-			ul li {
-				display: flex;
-			}
-			ul li time {
-				flex: 0 0 130px;
-				font-style: italic;
-				color: #888;
-			}
-			ul li a:visited {
-				color: #8e32dc;
-			}
-			time {
-				align-self: center;
-			}
-			/* Style the links as cards */
-			ul li a {
-				display: block;
-				padding: 15px;
-				text-decoration: none;
-				color: #333;
-				font-size: 16px;
-				border-radius: 8px;
-				background-color: #f0f0f0;
-				box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box-shadow */
-				transition: transform 0.2s ease; /* Add a smooth transform effect */
-			}
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      ul {
+        list-style-type: none;
+        padding: unset;
+      }
+      ul li {
+        display: flex;
+      }
+      ul li time {
+        flex: 0 0 130px;
+        font-style: italic;
+        color: #888;
+      }
+      ul li a:visited {
+        color: #8e32dc;
+      }
+      time {
+        align-self: center;
+      }
+      /* Style the links as cards */
+      ul li a {
+        display: block;
+        padding: 15px;
+        text-decoration: none;
+        color: #333;
+        font-size: 16px;
+        border-radius: 8px;
+        background-color: #f0f0f0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box-shadow */
+        transition: transform 0.2s ease; /* Add a smooth transform effect */
+      }
 
-			/* On hover effect */
-			ul li a:hover {
-				transform: scale(1.05); /* Slightly scale up the card on hover */
-			}
+      /* On hover effect */
+      ul li a:hover {
+        transform: scale(1.05); /* Slightly scale up the card on hover */
+      }
 
-			/* Add some spacing between the cards */
-			ul li + li {
-				margin-top: 10px;
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<content>
-				<ul>
-					{
-						posts.map((post) => (
-							<li>
-								<time datetime={post.frontmatter.pubDate}>
-									{new Date(post.frontmatter.pubDate).toLocaleDateString(
-										"en-us",
-										{
-											year: "numeric",
-											month: "short",
-											day: "numeric",
-										}
-									)}
-								</time>
-								<a href={post.url}>{post.frontmatter.title}</a>
-							</li>
-						))
-					}
-				</ul>
-			</content>
-			<Footer />
-		</main>
-	</body>
+      /* Add some spacing between the cards */
+      ul li + li {
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <content>
+        <ul>
+          {
+            posts.map((post) => (
+              <li>
+                <time datetime={post.frontmatter.pubDate}>
+                  {new Date(post.frontmatter.pubDate).toLocaleDateString(
+                    "en-us",
+                    {
+                      year: "numeric",
+                      month: "short",
+                      day: "numeric",
+                    }
+                  )}
+                </time>
+                <a href={post.url}>{post.frontmatter.title}</a>
+              </li>
+            ))
+          }
+        </ul>
+      </content>
+      <Footer />
+    </main>
+  </body>
 </html>
