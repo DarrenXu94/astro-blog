@@ -1,9 +1,9 @@
 ---
 layout: "../../layouts/BlogPost.astro"
 title: "Using Typescript on Vue template refs"
-description: ""
+description: "One of the powerful features of Vue is its template system, which provides a declarative way to render UI components. In this blog post, we'll dive into how you can enhance the type safety of your Vue components using TypeScript and template refs."
 pubDate: "Aug 13 2023"
-heroImage: "/images/blog/solution-basics/hero.png"
+heroImage: "/images/blog/web-workers/hero.png"
 ---
 
 In this blog post, we'll explore how to use TypeScript to enhance the type safety of your Vue components by leveraging template refs with the `InstanceType<typeof x>` operator. 
@@ -21,7 +21,7 @@ In the provided code snippet:
 ```jsx
 <Component
 id="component-id"
-:ref="createRef"
+:ref="e => createRef(e as InstanceType<typeof Component>, objectContainingRefs)"
 />
 ```
 
@@ -44,9 +44,12 @@ This type defines an object that stores references to components using keys spec
 The magic happens in the createRef function:
 
 ```ts
-const objectContainingRefs: ObjectReferenceType<['component-id']> = {}
+const objectContainingRefs = ref<ObjectReferenceType<['component-id']>>({})
 
-const createRef = <T extends readonly string[]>(element: InstanceType<typeof component>, objectContainingRefs: ObjectReferenceType<T>) => {
+const createRef = <T extends readonly string[]>(
+  element: InstanceType<typeof component>, 
+  objectContainingRefs: ObjectReferenceType<T>
+  ) => {
   objectContainingRefs.value[element.id] = element
 }
 ```
