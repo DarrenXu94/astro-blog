@@ -3,6 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: "Deploying a Vue Component on NPM: Lessons Learned"
 description: "Every mistake I made in publishing a Vue component to NPM"
 pubDate: "Aug 28 2023"
+heroImage: "/images/blog/publishing-a-npm-package/npm.png"
 ---
 
 # Introduction
@@ -17,20 +18,22 @@ Article Reference: [React Component Library with Vite and Deploy in NPM](https:/
 
 To start off, I used the following command to scaffold my Vue component project:
 
-
-# Building the library
-
-I wanted to make and publish a component onto NPM. I followed this article which publishes a react component.
-
 ```bash
 npm init vite@latest vue-table -- --template vue-ts
 ```
+
 However, this command didn't work seamlessly for me. I had to update vue-tsc to the latest version.
 I also had an issue with my outdated Node version as I discovered in [this article](https://github.com/unjs/consola/issues/204).
 
 # Testing locally
 
-To test locally I ran `npm build` and `npm pack` to create a local package. I created a new Vue consumering app and installed via a path. When I was testing I kept getting type errors. I asked ChatGPT `i am getting the error Could not find a declaration file for module 'vue-table'. how do i add one`. It recommended me to check my original library had the correct typings exposed and I realised I had completely forgot to add `vite-tsconfig-paths` and `vite-plugin-dts` in my `vite.config.js` so it wasn't exporting an types.
+To test locally I ran `npm build` and `npm pack` to create a local package. I created a new Vue consuming app and installed via a absolute path. When I was testing I kept getting type errors. 
+
+I asked ChatGPT 
+
+```i am getting the error Could not find a declaration file for module 'vue-table'. how do i add one```
+
+It recommended me to check my original library had the correct typings exposed and I realised I had completely forgot to add `vite-tsconfig-paths` and `vite-plugin-dts` in my `vite.config.js` so it wasn't exporting any types.
 
 # Deployment Challenges
 
@@ -61,8 +64,11 @@ However, a blunder on my part led me to initially install Vitepress in the same 
 In an attempt to automate the deployment process to NPM, I created a GitHub Action workflow. Strangely, it didn't seem to work. After some head-scratching, I discovered that I had mistakenly given the workflow file the same name `main.yml`, causing the confusion.
 
 I also prompted ChatGPT with this
-`write me a github actions yml file that will build and deploy a vitepress site to github pages 
-you may optionally use this package JamesIves/github-pages-deploy-action@3.6.2`
+
+```
+write me a github actions yml file that will build and deploy a vitepress site to github pages 
+you may optionally use this package JamesIves/github-pages-deploy-action@3.6.2
+```
 
 I copy pasted the result into the pipelines folder and ran every command over. This worked like a charm. 
 
