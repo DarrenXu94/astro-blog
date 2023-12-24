@@ -1,12 +1,14 @@
 ---
 layout: "../../layouts/BlogPost.astro"
 title: "Creating a blog website using Notion as the CMS"
-description: ""
+description: "Discover how you can deploy a blog on Netlify for free using Notion as the CMS"
 pubDate: "Dec 24 2023"
 heroImage: "/images/blog/astro-blog/hero.jpeg"
 ---
 
-Embarking on a web development project is always an adventure, and my recent escapade involved deploying an Astro site on Netlify while juggling Notion as the CMS. Let's keep it down-to-earth as we explore the nuts and bolts that made this project tick.
+Embarking on a web development project is always an adventure, and my recent escapade involved deploying an Astro site on Netlify while juggling Notion as the CMS. 
+
+Why did I decide to do this? I wanted to use a CMS that was easily accessible to everyone, able to be edited on my phone and most importantly 100% free.
 
 ## 1. Notion Page for API Integration:
 
