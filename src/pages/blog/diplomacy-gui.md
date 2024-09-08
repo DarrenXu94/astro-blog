@@ -3,7 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: "Making a GUI for the game diplomacy"
 description: "How to save 1 hour reading by spending all weekend devving"
 pubDate: "Sep 5 2024"
-heroImage: "/images/blog/graph-api/hero.png"
+heroImage: "/images/blog/diplomacy/hero.png"
 ---
 
 Recently, my friends and I decided to start a game of Diplomacy online, playing asynchronously. As a developer, I naturally didn't want to read the documentation (rules of the game), so I looked for an easier solution. 
