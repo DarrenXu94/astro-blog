@@ -33,3 +33,5 @@ I tried to deploy the project using Netlify, but hit a snag. The PHP login page 
 ### Conclusion
 
 Although I ran into several issues, this project taught me a lot about handling dependencies, working with different data types, and deploying apps. Plus, it's a fun way to play Diplomacy with friends without needing to read the rules!
+
+[See the live site here](https://diplomacy.darrenxu.com/)
