@@ -3,6 +3,8 @@ layout: "../../layouts/BlogPost.astro"
 title: "Defining a recursive type"
 description: "An interesting bit of code I generated with ChatGPT."
 pubDate: "Aug 09 2024"
+heroImage: "/images/blog/recursive-typescript/hero.jpg"
+
 ---
 
 Every now and then I find a piece of code so interesting generated from AI that I would have never thought of myself. In my instance, I wanted to be able to create a type of a sidebar menu I am creating. The sidebar should allow for nested sidebars but only up to a certain depth (as we don't want the sidebar to go on infinitely). 

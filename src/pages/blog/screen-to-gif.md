@@ -3,7 +3,6 @@ layout: "../../layouts/BlogPost.astro"
 title: "Mac screen capture to gif"
 description: "Steps to make a gif from a screen capture on Mac"
 pubDate: "July 26 2023"
-heroImage: "/images/blog/web-workers/hero.png"
 ---
 
 Capture the Screen Recording:

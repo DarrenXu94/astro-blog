@@ -3,7 +3,6 @@ layout: "../../layouts/BlogPost.astro"
 title: "Creating a blog website using Notion as the CMS"
 description: "Discover how you can deploy a blog on Netlify for free using Notion as the CMS"
 pubDate: "Dec 24 2023"
-heroImage: "/images/blog/astro-blog/hero.jpeg"
 ---
 
 Embarking on a web development project is always an adventure, and my recent escapade involved deploying an Astro site on Netlify while juggling Notion as the CMS. 

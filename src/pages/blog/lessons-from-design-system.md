@@ -1,9 +1,9 @@
 ---
 layout: "../../layouts/BlogPost.astro"
-title: "Lessons leant from building a table component in a design system"
+title: "Lessons learned from building a table component in a design system"
 description: ""
 pubDate: "Dec 10 2024"
-heroImage: "/images/blog/dribl-scrape/hero.png"
+heroImage: "/images/blog/lessons-from-design-system/hero.jpg"
 ---
 
 ## Lessons Learned from Building a Table Component in a Design System

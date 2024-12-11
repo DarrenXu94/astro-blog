@@ -3,7 +3,6 @@ layout: "../../layouts/BlogPost.astro"
 title: "Host a component library for free"
 description: "Steps I did to host a Vue component library for free using Github pages and storybook"
 pubDate: "Sep 02 2021"
-heroImage: "/images/blog/component-library/hero.jpeg"
 ---
 
 I wanted to create and host a design system online for free. This is part 1 of the series where I host the Vue components in a Storybook project deployed on Github pages.

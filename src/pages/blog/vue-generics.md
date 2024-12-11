@@ -3,7 +3,6 @@ layout: "../../layouts/BlogPost.astro"
 title: "Using generics in Vue components"
 description: ""
 pubDate: "Aug 21 2023"
-heroImage: "/images/blog/web-workers/hero.png"
 ---
 
 Vue Generics is a relatively new feature in Vue.js that empowers developers to create more reusable and type-safe components. 
